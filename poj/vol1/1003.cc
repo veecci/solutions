@@ -28,5 +28,5 @@ int main() {
 		printf("%d card(s)\n", ret);
 	}
     return 0;
-}
+} 
 
