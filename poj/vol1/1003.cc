@@ -19,14 +19,14 @@ typedef long long ll;
 int main() {
     double a, t; int ret;
     while (~scanf("%lf", &a) && a > 1e-8) {
-	    ret = 0; 
-	    for (int i = 2; a > 0; ++i) {
-			t = 1.0 / i;
-			a -= t;
-			++ret;
-		}
-		printf("%d card(s)\n", ret);
+    	ret = 0; 
+	for (int i = 2; a > 0; ++i) {
+		t = 1.0 / i;
+		a -= t;
+		++ret;
 	}
+	printf("%d card(s)\n", ret);
+    }
     return 0;
 } 
 
