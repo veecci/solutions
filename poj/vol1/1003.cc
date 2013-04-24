@@ -17,7 +17,8 @@ using namespace std;
 typedef long long ll;
 
 int main() {
-	double a, t; int ret;
+	double a, t; 
+	int ret;
    	while (~scanf("%lf", &a) && a > 1e-8) {
 		ret = 0; 
 		for (int i = 2; a > 0; ++i) {
