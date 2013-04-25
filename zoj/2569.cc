@@ -78,10 +78,6 @@ int main() {
 		for (int i = 0; i < mx; ++i) {
 			if (__builtin_popcount(i) == n) {
 				for (int j = 0; j < t; ++j) cal(i, j);
-				//printf("%d:\n",i);
-				//for (int j = 0; j < t; ++j) {
-					//printf("%d %d\n", rt[j].d, rt[j].p);
-				//}
 				int rc = 0;
 				for (int j = 1; j < t; ++j) {
 					if (__less(0, j)) ++rc;
