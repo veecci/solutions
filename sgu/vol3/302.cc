@@ -20,7 +20,7 @@ char str[maxn];
 int s[maxn], top;
 
 int main() {
-  scanf(" %s", str);
+	scanf(" %s", str);
 	for (int i = 0; str[i]; ++i) {
 		if (str[i] == '<') {
 			if (str[i + 1] == '/') --top;
