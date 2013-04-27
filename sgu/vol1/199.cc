@@ -17,7 +17,7 @@ using namespace std;
 int const maxn = 100100;
 typedef long long ll;
 struct node {
-  int x, y, id;
+	int x, y, id;
 	friend bool operator < (node a, node b) {
 		if (a.x == b.x) return a.y > b.y;
 		else return a.x < b.x;
@@ -27,7 +27,7 @@ int n;
 int dp[maxn], pre[maxn];
 
 int main() {
-        scanf("%d", &n);
+	scanf("%d", &n);
 	for (int i = 0; i < n; ++i) {
 		scanf("%d%d", &p[i].x, &p[i].y);
 		p[i].id = i;
