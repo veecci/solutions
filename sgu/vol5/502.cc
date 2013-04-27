@@ -25,7 +25,7 @@ int a[maxn];
 int n, mx;
 
 int main() {
-  scanf(" %s", str);
+	scanf(" %s", str);
 	n = strlen(str);
 	for (int i = 0; i < n; ++i) a[i] = str[i] - '0';
 	mx = 1 << n;
