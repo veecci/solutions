@@ -20,7 +20,7 @@ typedef long long ll;
 int n, a[maxn];
 bool mark[maxm];
 int main() {
-  scanf("%d", &n);
+	scanf("%d", &n);
 	for (int i = 0; i < n; ++i) {
 		scanf("%d", a + i);
 		mark[a[i]] = true;
