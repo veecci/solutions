@@ -17,7 +17,7 @@ using namespace std;
 typedef long long ll;
 
 int main() {
-  int n, ret;
+	int n, ret;
 	scanf("%d", &n);
 	ret = n;
 	for (int i = 2; i * i <= n; i += i == 2 ? 1 : 2) {
