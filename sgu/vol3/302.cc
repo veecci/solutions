@@ -18,7 +18,7 @@ int const maxn = 1010;
 typedef long long ll;
 char str[maxn];
 int s[maxn], top;
-
+ 
 int main() {
 	scanf(" %s", str);
 	for (int i = 0; str[i]; ++i) {
