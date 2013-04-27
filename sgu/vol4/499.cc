@@ -19,6 +19,7 @@ int const maxm = 1000100;
 typedef long long ll;
 int n, a[maxn];
 bool mark[maxm];
+
 int main() {
 	scanf("%d", &n);
 	for (int i = 0; i < n; ++i) {
