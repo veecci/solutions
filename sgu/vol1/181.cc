@@ -20,7 +20,7 @@ int const maxn = 11111;
 ll mark[maxn];
 
 int main() {
-  ll A, a, b, c, mod, k;
+	ll A, a, b, c, mod, k;
 	while (~scanf("%I64d%I64d%I64d%I64d%I64d%I64d", &A, &a, &b, &c, &mod, &k)) {
 		memset(mark, 0xff, sizeof mark);
 		mark[A] = 0;
