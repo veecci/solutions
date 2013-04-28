@@ -20,7 +20,7 @@ int const maxn = 10010;
 char s[maxn];
 int n, a[maxn];
 int main() {
-  while (~scanf(" %s", s + 1)) {
+	while (~scanf(" %s", s + 1)) {
 		n = strlen(s + 1);
 		a[0] = 0;
 		for (int i = 1; i <= n; ++i) {
