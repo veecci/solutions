@@ -19,6 +19,7 @@ typedef long long ll;
 int const maxn = 10010;
 char s[maxn];
 int n, a[maxn];
+
 int main() {
 	scanf(" %s", s + 1);
 	n = strlen(s + 1);
