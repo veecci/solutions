@@ -26,12 +26,11 @@ int main() {
 		}
 	}
 	ll n;
-	while (~scanf("%I64d", &n)) {
-		if (n == 1) puts("0");
-		else {
-			int ret = lower_bound(dat, dat + maxn, n) - dat;
-			printf("%d\n", ret);
-		}
+	scanf("%I64d", &n);
+	if (n == 1) puts("0");
+	else {
+		int ret = lower_bound(dat, dat + maxn, n) - dat;
+		printf("%d\n", ret);
 	}
 	return 0;
 }
