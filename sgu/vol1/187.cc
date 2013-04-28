@@ -18,7 +18,7 @@ using namespace std;
 typedef long long ll;
 int const maxn = 130005;
 struct node {
-  int key, ch[2], pre, size; bool rev;
+	int key, ch[2], pre, size; bool rev;
 	void reverse() {
 		if (size == 0) return;
 		rev ^= 1;
