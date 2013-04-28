@@ -18,7 +18,7 @@ using namespace std;
 typedef long long ll;
 int const maxm = 5010;
 struct rec {
-  int x1, y1, x2, y2;
+	int x1, y1, x2, y2;
 	char c;
 } r[maxm];
 int n, m;
