@@ -19,7 +19,7 @@ int const maxn = 55;
 typedef long long ll;
 ll dat[maxn];
 int main() {
-  for (int i = 1; i < maxn; ++i) {
+	for (int i = 1; i < maxn; ++i) {
 		dat[i] = i;
 		for (int j = 1; j <= i + 1; ++j) {
 			dat[i] = dat[i] * 2 + 1;
