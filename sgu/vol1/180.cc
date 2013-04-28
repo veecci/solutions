@@ -39,7 +39,7 @@ void merge_sort(int l, int r, ll &cnt) {
     }
 }
 int main() {
-  scanf("%d", &n);
+	scanf("%d", &n);
 	for (int i = 0; i < n; ++i) scanf("%d", &a[i]);
 	ll ret = 0;
 	merge_sort(0, n - 1, ret);
