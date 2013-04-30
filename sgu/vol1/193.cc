@@ -15,30 +15,12 @@
 #define inf 0x3f3f3f3f
 #define Inf 0x3FFFFFFFFFFFFFFFLL
 using namespace std;
-typedef long long ll;
-#include <iostream>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <algorithm>
-#include <cmath>
-#include <string>
-#include <sstream>
-#include <vector>
-#include <queue>
-#include <set>
-#include <map>
-#include <ctime>
-
-#define inf 0x3f3f3f3f
-#define Inf 0x3FFFFFFFFFFFFFFFLL
-using namespace std;
 int const maxn = 2020;
 typedef long long ll;
 
 typedef unsigned long long ull;
 class BigNum {
-  ull static const digit = 1000000000;
+	ull static const digit = 1000000000;
 	int static const digit_len = 9;
 	int static const maxl = 10000;
 	ull data[maxl];
@@ -224,3 +206,6 @@ int main() {
 	B.print();
 	return 0;
 }
+
+
+
