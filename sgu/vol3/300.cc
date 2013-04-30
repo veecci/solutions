@@ -74,7 +74,6 @@ int main() {
             l[i].leng = __dis(l[i].x1, l[i].y1, l[i].x2, l[i].y2);
             ret += l[i].leng;
         }
-//        for (int i = 1; i < n; ++i) l[i].print();
         int cx, cy, s;
         for (int i = 1; i < n; ++i) {
             s = l[i].leng;
