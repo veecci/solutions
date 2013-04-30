@@ -19,7 +19,7 @@ typedef long long ll;
 char s[1111];
 int num[1111];
 int func(int n) {
-  int cnt = 0;
+	int cnt = 0;
 	while (n--) {
 		num[cnt++] = n % 26;
 		n /= 26;
