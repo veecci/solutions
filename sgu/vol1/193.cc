@@ -17,12 +17,11 @@
 using namespace std;
 int const maxn = 2020;
 typedef long long ll;
-
 typedef unsigned long long ull;
 class BigNum {
 	ull static const digit = 1000000000;
 	int static const digit_len = 9;
-	int static const maxl = 10000;
+	int static const maxl = 1000;
 	ull data[maxl];
 	int len;
 	
@@ -56,6 +55,15 @@ class BigNum {
 	
 	bool zero() const {
 		return len == 1 && !data[0];
+	}
+	
+	BigNum &operator--() {
+		int i;
+		for (i = 0; !data[i]; ++i) {
+			data[i] = digit - 1;
+		}
+		--data[i];
+		return *this;
 	}
 	
 	BigNum &operator+=(BigNum const &a) {
@@ -109,16 +117,22 @@ class BigNum {
 		return *this;
 	}
 	BigNum operator*(BigNum const &a) {
-		BigNum r = 0, t;
-		for (int i = 0; i < a.len + a.len; ++i) r.data[i] = 0;
+		BigNum r = 0, t; ull p = 0;
+		for (int i = 0; i <= a.len + a.len; ++i) r.data[i] = 0;
 		if (zero() || a.zero()) return r;
 		for (int i = 0; i < len; ++i) {
 			t = a;
 			t *= data[i];
 			t.len += i;
 			r.len = max(r.len, t.len + 1);
-			for (int j = t.len - i - 1; ~j; --j)
-				r.data[j + i] = r.data[j + i] + t.data[j];
+			p = 0;
+			for (int j = 0; j < t.len - i || p; ++j) {
+				if (j + i < r.len) p += r.data[j + i];
+				if (j < t.len) p += t.data[j];
+				if (j >= r.len) ++r.len;
+				if (p >= digit) r.data[j + i] = p - digit, p = 1;
+				else r.data[j + i] = p, p = 0;
+			}
 		}
 		r.shrink();
 		return r;
@@ -149,17 +163,16 @@ class BigNum {
 		return *this - (*this / a) * a;
 	}
 	
-	
-	bool operator==(ull x) {
-		if (data[0] != x % digit) return false;
-		x /= digit;
-		int p = 1;
-		while (x) {
-			if (data[p++] != x % digit) return false;
-			x /= digit;
+	BigNum operator^(ull a) {
+		BigNum ret = 1, t = *this, u;
+		while (a > 0) {
+			if (a & 1) ret = ret * t;
+			t = t * t;
+			a >>= 1;
 		}
-		return p == len;
+		return ret;
 	}
+	
 	bool operator==(BigNum const &x) const {
 		if (len != x.len) return false;
 		for (int i = 0; i < len; ++i) {
@@ -175,11 +188,11 @@ class BigNum {
 		return false;
 	}
 	
-	#define format0 "%I64d"
-	#define format1 "%0*I64d"
+	#define format0 "%I64u"
+	#define format1 "%0*I64u"
 	#ifdef __unix__
-		#define format0 "%lld"
-		#define format1 "%0*lld"
+		#define format0 "%llu"
+		#define format1 "%0*llu"
 	#endif
 	
 	void print() {
@@ -196,6 +209,7 @@ BigNum gcd(BigNum a, BigNum b) {
 	}
 	return a;
 }
+
 
 char str[maxn];
 int main() {
