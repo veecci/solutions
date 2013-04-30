@@ -117,7 +117,7 @@ class BigNum {
 	}
 	BigNum operator*(BigNum const &a) {
 		BigNum r = 0, t; ull p = 0;
-		for (int i = 0; i <= a.len + a.len; ++i) r.data[i] = 0;
+		for (int i = 0; i <= a.len + a.len + 1; ++i) r.data[i] = 0;
 		if (zero() || a.zero()) return r;
 		for (int i = 0; i < len; ++i) {
 			t = a;
