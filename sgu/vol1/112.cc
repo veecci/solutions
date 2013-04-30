@@ -19,7 +19,7 @@ typedef long long ll;
 
 typedef unsigned long long ull;
 class BigNum {
-  ull static const digit = 1000000000;
+	ull static const digit = 1000000000;
 	int static const digit_len = 9;
 	int static const maxl = 1000;
 	ull data[maxl];
