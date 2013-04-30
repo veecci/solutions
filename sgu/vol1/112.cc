@@ -16,7 +16,6 @@
 #define Inf 0x3FFFFFFFFFFFFFFFLL
 using namespace std;
 typedef long long ll;
-
 typedef unsigned long long ull;
 class BigNum {
 	ull static const digit = 1000000000;
