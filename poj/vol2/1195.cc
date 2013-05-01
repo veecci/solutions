@@ -33,6 +33,7 @@ int sum(int x,int y){
     }
     return s;
 }
+
 int main(){
     int p,s,x,y,a,l,b,r,t;
     while(scanf("%d",&p)){
