@@ -11,7 +11,7 @@ int dir[4][2]={{0,1},{1,0},{0,-1},{-1,0}};
 bool check(int x,int y){
     if(x>=0 && x<N && y>=0 && y<N)return true;
     else return false;
-}
+} 
 void dfs(int d){
     if(d>res)res=d;
     int tx,ty;
