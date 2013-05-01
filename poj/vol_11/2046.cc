@@ -19,7 +19,6 @@ struct sta{
 };
 
 set<sta>hs;
-
 struct node{
     int t;
     char x[4],y[4];
