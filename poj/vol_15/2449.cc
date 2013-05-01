@@ -32,7 +32,6 @@ void addedge2(int u,int v,int c){
 }
 void spfa(int s){
     int t,u,w;
- //   while(!q.empty())q.pop();
     memset(dist,0x7f,sizeof(dist));
     memset(used,false,sizeof(used));
     dist[s]=0;
