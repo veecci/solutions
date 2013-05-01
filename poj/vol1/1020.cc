@@ -22,7 +22,6 @@ bool dfs(int d){
         }
         if(sf)break;
     }
-  //  cout<<sx<<","<<sy<<endl;
     int p=-1;
     for(int k=M-1;k>=0;k--){
 
