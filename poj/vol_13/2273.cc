@@ -26,6 +26,7 @@ int func(int n) {
 	}	
 	return cnt;
 }
+
 int main() {
 	int n, m;
 	while (~scanf(" R%dC%d", &n, &m)) {
