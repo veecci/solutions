@@ -60,6 +60,7 @@ struct BigNum {
         return C;
     }
 } A, B;
+
 char str[maxn];
 int ans[maxn], ant;
 
