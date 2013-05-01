@@ -51,6 +51,5 @@ int main(){
        res=(res+dp[M-1][i])%mod;
     }
     printf("%d\n",res);
-   // system("pause");
     return 0;
 }
