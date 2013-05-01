@@ -33,6 +33,7 @@ void init(){
 }
 int dp[maxn]; bool used[maxn];
 int list[maxn][maxn];
+
 void dfs(int u){
     used[u] = true;
     int v, cnt = 0;
