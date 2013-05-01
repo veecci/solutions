@@ -62,6 +62,7 @@ void dfs(int n, int d, int x, int y){
         }
     }
 }
+
 int main(){
     int n;
     while(~scanf("%d", &n)){
