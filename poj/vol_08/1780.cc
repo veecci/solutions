@@ -16,7 +16,6 @@
 #define maxm 1000100
 using namespace std;
 
-
 char res[maxn];
 int mx;
 
