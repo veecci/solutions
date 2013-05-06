@@ -18,7 +18,7 @@ int const maxn = 1010;
 int a[maxn];
 int dp[maxn][2][2];
 int main() {
-  int n;
+	int n;
 	while (~scanf("%d", &n)) {
 		for (int i = 0; i < n; ++i) scanf("%d", &a[i]);
 		memset(dp, 0, sizeof dp);
