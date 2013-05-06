@@ -19,7 +19,7 @@ typedef long long ll;
 ll a[111] = {1, 1};
 
 int main() {
-  for (int i = 2; i <= 33; ++i) {
+	for (int i = 2; i <= 33; ++i) {
 		a[i] = a[i - 1] * (4 * i - 2) / (i + 1);
 	}	
 	int k;
