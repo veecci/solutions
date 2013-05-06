@@ -22,7 +22,7 @@ bool mark[maxn];
 int ans[maxn / 10], ant;
 
 int main() {
-  cnt = 0, mark[0] = mark[1] = true;
+	cnt = 0, mark[0] = mark[1] = true;
 	for (int i = 2; i < maxn; ++i) {
 		if (!mark[i]) pri[cnt++] = i;
 		for (int j = 0; i * pri[j] < maxn; ++j) {
