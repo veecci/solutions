@@ -18,7 +18,7 @@ using namespace std;
 typedef long long ll;
 bool mark[11];
 bool check(int n, int r) {
-  int ret = 0;
+	int ret = 0;
 	for (int i = 0; i < n - 1; ++i) {
 		ret = (ret * 10 + 1) % r;
 	}
