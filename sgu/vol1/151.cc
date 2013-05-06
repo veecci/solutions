@@ -19,7 +19,7 @@ typedef long long ll;
 double const eps = 1e-10;
 double xx[5];
 int main() {
-  double _c, _b, _m;
+	double _c, _b, _m;
 	while (~scanf("%lf %lf %lf", &_b, &_c, &_m)) {
 		double a = _m + _m, b = _b, c = _c;
 		xx[0] = a, xx[1] = b, xx[2] = c;
