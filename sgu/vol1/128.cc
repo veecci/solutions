@@ -30,7 +30,7 @@ void init(){ memset(parents, 0xff, sizeof(parents)); }
 
 int n;
 struct point {
-  int x, y;
+	int x, y;
 } p[maxn];
 inline bool cmp_x(int a, int b) { return p[a].x < p[b].x; }
 inline bool cmp_y(int a, int b) { return p[a].y < p[b].y; }
