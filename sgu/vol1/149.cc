@@ -21,7 +21,7 @@ int const maxm = 100100;
 struct edges{ int u, w, next; } e[maxm];
 int p[maxn], idx;
 void addedge(int u, int v, int w) {
-  e[idx].u = v, e[idx].w = w, e[idx].next = p[u], p[u] = idx++;
+	e[idx].u = v, e[idx].w = w, e[idx].next = p[u], p[u] = idx++;
 }
 void init() { idx = 0; memset(p, 0xff, sizeof p); }
 
