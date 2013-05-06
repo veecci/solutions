@@ -19,7 +19,7 @@ int const maxn = 15151;
 typedef long long ll;
 
 struct node {
-  int v, p, id;
+	int v, p, id;
 	node (int v, int p, int id) : v(v), p(p), id(id) { }
 	node () { }
 	friend bool operator < (node a, node b) {
