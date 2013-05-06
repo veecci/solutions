@@ -22,7 +22,7 @@ long long powMod(long long a, long long b, long long c) {
   return ret;
 }
 int main() {
-  ll n, m, k, a;
+	ll n, m, k, a;
 	while (cin >> n >> m >> k) {
 		int ret = 0;
 		for (int i = 0; i < n; ++i) {
