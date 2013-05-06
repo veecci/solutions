@@ -21,7 +21,7 @@ int n, m;
 ll dp[maxn][1 << 9];
 
 void dfs(int pos, int msk, int now, int row) {
-  if (pos == m) {
+	if (pos == m) {
 		dp[row][now] += dp[row - 1][msk];
 		return;
 	}
