@@ -24,7 +24,7 @@ int a[maxn][maxn];
 int now[maxn][maxn];
 
 bool dfs(int x, int y) {
-  if (x == n) {
+	if (x == n) {
 		for (int i = 0; i < n; ++i) {
 			for (int j = 0; j < n; ++j) {
 				if (now[i][j] != b[i][j]) return false;
