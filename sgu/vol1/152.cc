@@ -21,7 +21,7 @@ int const maxn = 10101;
 int a[maxn], b[maxn], c[maxn], d[maxn];
 
 int main() {
-  int n;
+	int n;
 	while (~scanf("%d", &n)) {
 		int s = 0;
 		for (int i = 0; i < n; ++i) {
