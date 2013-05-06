@@ -222,6 +222,7 @@ bool check(ll a) {
 		return false;
 	}
 }
+
 int main() {
 	while (~scanf("%d", &n)) {
 		min_x = Inf, max_x = -Inf, min_y = Inf, max_y = -Inf;
