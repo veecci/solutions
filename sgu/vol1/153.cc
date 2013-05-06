@@ -17,10 +17,10 @@
 using namespace std;
 typedef long long ll;
 int a[11];
-int dp[102525][2];
+int dp[2525][2];
 int m;
 int dfs(int n, int p) {
-  if (~dp[n][p]) return dp[n][p];
+	if (~dp[n][p]) return dp[n][p];
 	if (n == 0) return dp[n][p] = 1;
 	int ret = 0;
 	for (int i = 0; i < m && a[i] <= n; ++i) {
