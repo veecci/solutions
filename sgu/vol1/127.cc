@@ -19,7 +19,7 @@ typedef long long ll;
 int const maxn = 11111;
 int c[111];
 int main() {
-  int k, n, a;
+	int k, n, a;
 	scanf("%d%d", &k, &n);
 	for (int i = 0; i < n; ++i) {
 		scanf("%d", &a);
