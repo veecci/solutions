@@ -21,7 +21,7 @@ char str[maxn];
 bool mark[maxn];
 
 int main() {
-  int n;
+	int n;
 	scanf("%d %s", &n, str);
 
 	for (int len = 1; len <= n; ++len) {
