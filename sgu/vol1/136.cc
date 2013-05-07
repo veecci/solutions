@@ -19,7 +19,7 @@ typedef long long ll;
 int const maxn = 10101;
 double const eps = 1e-9;
 struct Point {
-  double x, y;
+	double x, y;
 } p[maxn];
 double x[maxn], y[maxn];
 inline int sgn(double x) {
