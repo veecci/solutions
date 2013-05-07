@@ -19,7 +19,7 @@ typedef long long ll;
 ll a[44] = {0, 1, 1};
 ll s[44] = {0, 1, 2};
 int main() {
-  for (int i = 2; i <= 40; ++i) {
+	for (int i = 2; i <= 40; ++i) {
 		a[i] = a[i - 1] + a[i - 2];
 		s[i] = s[i - 1] + a[i];
 	}
