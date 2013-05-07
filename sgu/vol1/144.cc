@@ -18,7 +18,7 @@ using namespace std;
 typedef long long ll;
 
 int main() {
-  double x, y, z;
+	double x, y, z;
 	scanf("%lf %lf %lf", &x, &y, &z);
 	double t = (y - x) * 60.0;
 	double v = t * t;
