@@ -26,7 +26,7 @@ int _now, _pre;
 inline int f(int mask, int pos) { return (mask >> (pos + pos)) & 3; }
 inline int g(int pos, int c) { return (c << (pos + pos)); }
 void dfs(int pos, int msk, int now, int row, int c) {
-  if (pos == m) {
+	if (pos == m) {
 		dp[_now][now] = min(dp[_now][now], dp[_pre][msk] + c);
 		return;
 	}
