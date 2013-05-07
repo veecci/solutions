@@ -18,7 +18,7 @@ using namespace std;
 typedef long long ll;
 ll ans[70000] = { 1 };
 int main() {
-  ll t = 1;
+	ll t = 1;
 	for (int i = 1; i <= 65535; ++i) {
 		ans[i] = ans[i - 1] + t;
 		++t;
