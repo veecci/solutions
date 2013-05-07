@@ -18,7 +18,7 @@ using namespace std;
 int const maxn = 20000;
 typedef long long ll;
 struct node {
-  int a, b;
+	int a, b;
 	friend bool operator < (node A, node B) {
 		return A.b > B.b;
 	}
