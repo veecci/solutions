@@ -19,7 +19,7 @@ typedef long long ll;
 int a[16];
 
 int main() {
-  for (int i = 0; i < 16; ++i) scanf("%d", &a[i]);
+	for (int i = 0; i < 16; ++i) scanf("%d", &a[i]);
 	int ret = 0;
 	for (int i = 0; i < 16; ++i) {
 		if (a[i] == 0) {
