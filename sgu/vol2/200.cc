@@ -25,7 +25,7 @@ bool fre[maxn]; int fs[maxn], fnt;
 int x[maxn];
 
 void print() {
-  for (int i = 0; i < n; ++i) {
+	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j <= m; ++j) {
 			printf("%d ", mat[i][j]);
 		}
