@@ -23,7 +23,7 @@ int b[maxn], n;
 int m, mod;
 
 void getBinary() {
-  int len = strlen(str);
+	int len = strlen(str);
 	for (int i = 0; i < len; ++i) a[len - i - 1] = str[i] - '0';
 	--a[0];
 	if (a[0] < 0) {
@@ -142,23 +142,18 @@ struct matrix{
 
 int main() {
 	int T;
-	scanf("%d", &T);
-	for (int ca = 0; ca < T; ++ca) {
-		if (ca > 0) puts("");
-		scanf(" %s %d %d", str, &m, &mod);
-		init();
-		getBinary();
-		A.init(m);
-		//A.print();
-		B = A.powMod();
-		//B.print();
-		int ret = 0;
-		for (int i = 0; i < (1 << m); ++i) {
-			for (int j = 0; j < (1 << m); ++j) {
-				ret += B.mat[i][j];
-			}
+	scanf(" %s %d %d", str, &m, &mod);
+	init();
+	getBinary();
+	A.init(m);
+	B = A.powMod();
+	int ret = 0;
+	for (int i = 0; i < (1 << m); ++i) {
+		for (int j = 0; j < (1 << m); ++j) {
+			ret += B.mat[i][j];
 		}
-		printf("%d\n", ret % mod);
-	}	
+	}
+	printf("%d\n", ret % mod);
 	return 0;
 }
+
