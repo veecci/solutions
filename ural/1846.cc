@@ -24,7 +24,7 @@ map <int, int> :: iterator it;
 
 int tree[maxn << 2]; 
 void update(int l, int r, int a, int c, int p) {
-  if (l == r) {
+	if (l == r) {
 		tree[p] = c;
 		return;
 	}
