@@ -78,7 +78,6 @@ int main() {
 		c = vx * y1 - vy * x1;
 		int tr = 0;
 		if (v[a][b].size() > 0) {
-
 			if (vx < 0) {
 				tr = upper_bound(v[a][b].begin(), v[a][b].end(), make_pair(c, x1)) - v[a][b].begin();
 				tr -= upper_bound(v[a][b].begin(), v[a][b].end(), make_pair(c - 1, inf)) - v[a][b].begin();
