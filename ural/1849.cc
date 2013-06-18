@@ -24,7 +24,7 @@ vector < pair<int, int> > v[21][21];
 int n;
 
 int main() {
-  scanf("%d", &n);
+	scanf("%d", &n);
 	int id; int x, y;
 	int a, b, c, g;
 	for (int i = 0; i < n; ++i) {
