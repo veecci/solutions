@@ -24,7 +24,7 @@ int num[maxn];
 bool has[maxn][maxn];
 
 int main() {
-  int T;
+	int T;
 	char op[2]; 
 	for (scanf("%d", &T); T--; ) {
 		scanf("%d%d%d", &n, &m, &k);
