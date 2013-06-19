@@ -30,7 +30,7 @@ PII p[4];
 
 int const cd[4][3] = { { 1, 2, 3 }, { 0, 2, 3 }, { 0, 1, 3 }, { 0, 1, 2 } };
 inline void upd(int c, int r, int s, int e, int step, int add) {
-  int A[3], B[3];
+	int A[3], B[3];
 	for (int i = 0, j = 0; i < 4; ++i) if (p[i].first != s) A[j++] = p[i].second;
 	for (int i = 0, j = 0; i < 4; ++i) if (p[i].first != e) B[j++] = p[i].second;
 	
