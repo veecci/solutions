@@ -42,7 +42,7 @@ int main() {
 				}
 			}
 		}
-	}	
+	}
 	for (int i = 0; i <= 20; ++i) {
 		for (int j = 0; j <= 20; ++j) {
 			sort(v[i][j].begin(), v[i][j].end());
@@ -109,4 +109,3 @@ int main() {
 	printf("%d %d\n", rc, ret);
 	return 0;
 }
-
