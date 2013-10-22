@@ -62,11 +62,11 @@ struct lines {
 		if (A.a == B.a) return A.b < B.b;
 		else return A.a < B.a;
 	}
-} l[M], pl[M];
+} l[M], pl[M], ol[M];
 int pre[N], nxt[N];
-
+int o_n, o_m;
 int p_n, p_m, p_edges[M][2];
-int newID[N], oriID[N];
+int newID[N], oriID[N], poriID[N], tID[N];
 // }}
 
 void delR() {
@@ -98,7 +98,7 @@ inline int getInt() {
 inline void input() {
 	init();
 	clr(pre, 0xff), clr(nxt, 0xff);
-	n0 = n = getInt(), m = getInt();
+	n0 = o_n = n = getInt(), m = o_m = getInt();
 	Rep(i, n) oriID[i] = i;
 	rep(i, m) {
 		l[i].a = getInt();
@@ -118,7 +118,7 @@ void outputEdges () {
 
 int added[N], acc;
 bool ignored[N];
-
+bool deled[N];
 void rebuild() {
 	int mt = 0;
 	rep(i, m) {
@@ -132,14 +132,27 @@ void rebuild() {
 	delR();
 	build();
 }
+void rebuild2() {
+	int mt = 0;
+	rep(i, m) {
+		if (!deled[oriID[l[i].a]] && !deled[oriID[l[i].b]]) {
+			l[mt].a = l[i].a;
+			l[mt].b = l[i].b;
+			++mt;
+		}	
+	}
+	m = mt;
+	delR();
+	build();
+}
 void reduce() {
-	bool updated = 1;
 	clr(ignored, 0);
+	bool updated = 1;
 	while (updated) {
 		updated = 0;
 		rep(i, m) {
 			if (!ignored[l[i].a] && l[i].a == l[i].b) {
-				added[acc++] = l[i].a;
+				added[acc++] = oriID[l[i].a];
 				ignored[l[i].a] = 1;
 				updated = 1;
 			}
@@ -189,11 +202,12 @@ void reduce() {
 	}
 	//rebuild
 	int id = 0;
+	Rep(i, n) tID[i] = oriID[i];
 	Rep(i, n) if (!ignored[i]) {
 		newID[i] = ++id;
-		oriID[id] = oriID[i];
+		oriID[id] = tID[i];
 	}
-	
+
 	n = id;
 	rep(i, m) {
 		l[i].a = newID[l[i].a];
@@ -234,44 +248,66 @@ inline bool cmp2(consNode const &a, consNode const &b) {
 }
 
 void construct(int g) {
-	clr(ignored, 0); cc = 0; int cur = 1;
+	clr(deled, 0); cc = 0; int cur = 1;
 	Rep(i, n) cons[i] = consNode(i, deg_in[i], deg_out[i]);
+
 	if (g == 0) sort(cons + 1, cons + n + 1, cmp0);
 	else if (g == 1) sort(cons + 1, cons + n + 1, cmp1);
 	else sort(cons + 1, cons + n + 1, cmp2);
-	
-	while (check() && cur < n) {
+	int nn = n;
+	while (check() && cur <= nn) {
+		while (cur <= nn && deled[oriID[cons[cur].id]]) {
+			++cur;
+		}
+		if (cur > nn) break;
 		constmp = cons[cur++];
-		if (ignored[constmp.id]) continue;
-		//cout<<"DEL "<<constmp.id<<endl;
-		ignored[constmp.id] = 1;
-		consAdd[cc++] = constmp.id;
-		rebuild();
+		deled[oriID[constmp.id]] = 1;
+		consAdd[cc++] = oriID[constmp.id];
+		
+		//rebuild
+		rebuild2();
+		int id = 0;
+		Rep(i, n) tID[i] = oriID[i];
+		Rep(i, n) if (!deled[oriID[i]]) {
+			newID[i] = ++id;
+			oriID[id] = tID[i];
+		}
+		n = id;
+		rep(i, m) {
+			l[i].a = newID[l[i].a];
+			l[i].b = newID[l[i].b];
+		}
+		delR();
+		build();
 		reduce();
 	}	
 }
 // }}
 
 void localSearch() {
-	
+
+}
+int bestNum;
+int bestSolution[N];
+void output() {
+	sort(bestSolution, bestSolution + bestNum);
+	printf("%d\n{", bestNum);
+	rep(i, bestNum) {
+		if (i == bestNum - 1) printf("%d}\n", bestSolution[i]);
+		else printf("%d, ", bestSolution[i]);
+	}
 }
 
 
-
-int bestNum;
-int bestSolution[N];
-
 void work() {
-	acc = 0;
+	acc = 0; 
 	reduce(); int bcc = acc;
 	rep(i, acc) bestSolution[i] = added[i];
 	bestNum = n0;
-	//puts("out"); outputEdges();
-	
-	p_n = n, p_m = m; rep(i, m) pl[i].a = l[i].a, pl[i].b = l[i].b;
+	p_n = n, p_m = m; rep(i, m) pl[i].a = l[i].a, pl[i].b = l[i].b; Rep(i, n) poriID[i] = oriID[i];
 	rep(k, MaxIter) {
 		if (k) { 
-			n = p_n, m = p_m; rep(i, m) l[i].a = pl[i].a, l[i].b = pl[i].b; 
+			n = p_n, m = p_m; rep(i, m) l[i].a = pl[i].a, l[i].b = pl[i].b; Rep(i, n) oriID[i] = poriID[i];
 			build();
 		}
 		acc = 0;
@@ -282,23 +318,67 @@ void work() {
 			rep(i, cc) bestSolution[bestNum++] = consAdd[i];
 			rep(i, acc) bestSolution[bestNum++] = added[i];
 		}
-		//cout<<k<<":"<<bestNum<<endl;
+		
 	}
 }
-void output() {
-	printf("%d\n{", bestNum);
-	rep(i, bestNum) {
-		if (i == bestNum - 1) printf("%d}\n", oriID[bestSolution[i]]);
-		else printf("%d, ", oriID[bestSolution[i]]);
-	}
-}
+bool mark[N];
+
 int main() {
+	//freopen("P50-100.dat", "r", stdin);
+	//freopen("P50-150.dat", "r", stdin);
+	//freopen("P50-200.dat", "r", stdin);
+	//freopen("P50-250.dat", "r", stdin);
+	//freopen("P50-300.dat", "r", stdin);
+	//freopen("P50-500.dat", "r", stdin);
+	//freopen("P50-600.dat", "r", stdin);
+	//freopen("P50-700.dat", "r", stdin);
+	//freopen("P50-800.dat", "r", stdin);
+	//freopen("P50-900.dat", "r", stdin);
+	//freopen("P100-200.dat", "r", stdin);
+	//freopen("P100-300.dat", "r", stdin);
+	//freopen("P100-400.dat", "r", stdin);
+	//freopen("P100-500.dat", "r", stdin);
+	//freopen("P100-600.dat", "r", stdin);
+	//freopen("P100-1000.dat", "r", stdin);
+	//freopen("P100-1200.dat", "r", stdin);
+	//freopen("P100-1300.dat", "r", stdin);
+	//freopen("P100-1400.dat", "r", stdin);
+	//freopen("P500-1000.dat", "r", stdin);
+	//freopen("P500-1500.dat", "r", stdin);
+	//freopen("P500-2000.dat", "r", stdin);
+	//freopen("P500-2500.dat", "r", stdin);
+	//freopen("P500-3000.dat", "r", stdin);
+	//freopen("P500-5000.dat", "r", stdin);
+	//freopen("P500-5500.dat", "r", stdin);
+	//freopen("P500-6000.dat", "r", stdin);
+	//freopen("P500-6500.dat", "r", stdin);
+	//freopen("P500-7000.dat", "r", stdin);
+	//freopen("P1000-3000.dat", "r", stdin);
+	//freopen("P1000-35000.dat", "r", stdin);
+	//freopen("P1000-4000.dat", "r", stdin);
+	//freopen("P1000-4500.dat", "r", stdin);
+	//freopen("P1000-5000.dat", "r", stdin);
+	//freopen("P1000-10000.dat", "r", stdin);
+	//freopen("P1000-15000.dat", "r", stdin);
+	//freopen("P1000-20000.dat", "r", stdin);
+	//freopen("P1000-25000.dat", "r", stdin);
+	//freopen("P1000-30000.dat", "r", stdin);
 	input();
-	
 	work();
 	output();
+	//checker
+	n = o_n, m = o_m; rep(i, m) l[i].a = ol[i].a, l[i].b = ol[i].b; 
+	clr(mark, 0); rep(i, bestNum) mark[bestSolution[i]] = 1; 
+	init();
+	rep(i, m) {
+		if (!mark[l[i].a] && !mark[l[i].b]) {
+			addEdge(l[i].a, l[i].b);
+		}
+	}
+	if (!check()) puts("check OK"); else puts("Wrong!");
 	return 0;
 }
+
 
 
 
