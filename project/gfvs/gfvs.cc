@@ -56,19 +56,34 @@ inline void init() {
 	clr(deg_in, 0);
 	clr(deg_out, 0);
 }
-int edges[M][2];
+struct lines {
+	int a, b;
+	friend bool operator < (lines A, lines B) {
+		if (A.a == B.a) return A.b < B.b;
+		else return A.a < B.a;
+	}
+} l[M], pl[M];
 int pre[N], nxt[N];
 
 int p_n, p_m, p_edges[M][2];
+int newID[N], oriID[N];
 // }}
 
-
+void delR() {
+	int tm = 1;
+	sort(l, l + m);
+	for (int i = 1; i < m; ++i) {
+		if (l[i].a == l[i - 1].a && l[i].b == l[i - 1].b) continue;
+		l[tm].a = l[i].a, l[tm].b = l[i].b; ++tm;
+	}
+	m = tm;
+}
 void build() {
 	init();
 	rep(i, m) {
-		addEdge(edges[i][0], edges[i][1]);
-		pre[edges[i][1]] = edges[i][0];
-		nxt[edges[i][0]] = edges[i][1];
+		addEdge(l[i].a, l[i].b);
+		pre[l[i].b] = l[i].a;
+		nxt[l[i].a] = l[i].b;
 	}
 }
 
@@ -84,47 +99,53 @@ inline void input() {
 	init();
 	clr(pre, 0xff), clr(nxt, 0xff);
 	n0 = n = getInt(), m = getInt();
+	Rep(i, n) oriID[i] = i;
 	rep(i, m) {
-		edges[i][0] = getInt();
-		edges[i][1] = getInt();
+		l[i].a = getInt();
+		l[i].b = getInt();
 	}
 	build();
 }
 // }}
+void outputEdges () {
+	rep(i, m) {
+		printf("(%d %d)\n", l[i].a, l[i].b);
+	}
+	puts("");
+}
+
+
 
 int added[N], acc;
 bool ignored[N];
-int newID[N];
+
 void rebuild() {
 	int mt = 0;
 	rep(i, m) {
-		if (!ignored[edges[i][0]] && !ignored[edges[i][1]]) {
-			edges[mt][0] = edges[i][0];
-			edges[mt][1] = edges[i][1];
+		if (!ignored[l[i].a] && !ignored[l[i].b]) {
+			l[mt].a = l[i].a;
+			l[mt].b = l[i].b;
 			++mt;
 		}	
 	}
 	m = mt;
+	delR();
 	build();
 }
 void reduce() {
 	bool updated = 1;
 	clr(ignored, 0);
 	while (updated) {
-		rep(i, m) {
-			printf("(%d, %d)\n", edges[i][0], edges[i][1]);
-		}system("pause");
 		updated = 0;
 		rep(i, m) {
-			if (!ignored[edges[i][0]] && edges[i][0] == edges[i][1]) {
-				added[acc++] = edges[i][0];
-				ignored[edges[i][0]] = 1;
+			if (!ignored[l[i].a] && l[i].a == l[i].b) {
+				added[acc++] = l[i].a;
+				ignored[l[i].a] = 1;
 				updated = 1;
 			}
 		}
 		Rep(i, n) if (!ignored[i]) {
 			if (!deg_in[i] || !deg_out[i]) {
-				cout<<"del " << i << endl;
 				ignored[i] = 1;
 				updated = 1;
 			}
@@ -135,31 +156,31 @@ void reduce() {
 		}
 		Rep(i, n) {
 			if (!ignored[i] && deg_in[i] == 1) {
-				cout<<"del "<<i<<endl;
 				ignored[i] = 1;
 				int u = pre[i], sel = -1;
 				rep(j, m) {
-					if (edges[j][0] == u && edges[j][1] == i) sel = j;
-					else if (edges[j][0] == i) edges[j][0] = u;
+					if (l[j].a == u && l[j].b == i) sel = j;
+					else if (l[j].a == i) l[j].a = u;
 				}
-				edges[sel][0] = edges[m - 1][0];
-				edges[sel][1] = edges[m - 1][1];
+				l[sel].a = l[m - 1].a;
+				l[sel].b = l[m - 1].b;
 				--m;
+				delR();
 				build();
 				updated = 1;
 				break;
 			}
 			if (!ignored[i] && deg_out[i] == 1) {
-				cout<<"del " <<i<<endl;
 				ignored[i] = 1;
 				int v = nxt[i], sel = -1;
 				rep(j, m) {
-					if (edges[j][0] == i && edges[j][1] == v) sel = j;
-					else if (edges[j][1] == i) edges[j][1] = v;
+					if (l[j].a == i && l[j].b == v) sel = j;
+					else if (l[j].b == i) l[j].b = v;
 				}
-				edges[sel][0] = edges[m - 1][0];
-				edges[sel][1] = edges[m - 1][1];
+				l[sel].a = l[m - 1].a;
+				l[sel].b = l[m - 1].b;
 				--m;
+				delR();
 				build();
 				updated = 1;
 				break;
@@ -168,11 +189,15 @@ void reduce() {
 	}
 	//rebuild
 	int id = 0;
-	Rep(i, n) if (!ignored[i]) newID[i] = ++id;
+	Rep(i, n) if (!ignored[i]) {
+		newID[i] = ++id;
+		oriID[id] = oriID[i];
+	}
+	
 	n = id;
 	rep(i, m) {
-		edges[i][0] = newID[edges[i][0]];
-		edges[i][1] = newID[edges[i][1]];
+		l[i].a = newID[l[i].a];
+		l[i].b = newID[l[i].b];
 	}
 	build();
 }
@@ -209,7 +234,7 @@ inline bool cmp2(consNode const &a, consNode const &b) {
 }
 
 void construct(int g) {
-	clr(ignored, 0); cc = 0; int cur = 0;
+	clr(ignored, 0); cc = 0; int cur = 1;
 	Rep(i, n) cons[i] = consNode(i, deg_in[i], deg_out[i]);
 	if (g == 0) sort(cons + 1, cons + n + 1, cmp0);
 	else if (g == 1) sort(cons + 1, cons + n + 1, cmp1);
@@ -218,6 +243,7 @@ void construct(int g) {
 	while (check() && cur < n) {
 		constmp = cons[cur++];
 		if (ignored[constmp.id]) continue;
+		//cout<<"DEL "<<constmp.id<<endl;
 		ignored[constmp.id] = 1;
 		consAdd[cc++] = constmp.id;
 		rebuild();
@@ -230,40 +256,49 @@ void localSearch() {
 	
 }
 
+
+
 int bestNum;
 int bestSolution[N];
 
 void work() {
 	acc = 0;
-	reduce();
+	reduce(); int bcc = acc;
 	rep(i, acc) bestSolution[i] = added[i];
 	bestNum = n0;
-	p_n = n, p_m = m; rep(i, m) p_edges[i][0] = edges[i][0], p_edges[i][1] = edges[i][1];
+	//puts("out"); outputEdges();
+	
+	p_n = n, p_m = m; rep(i, m) pl[i].a = l[i].a, pl[i].b = l[i].b;
 	rep(k, MaxIter) {
 		if (k) { 
-			n = p_n, m = p_m; rep(i, m) edges[i][0] = p_edges[i][0], edges[i][1] = p_edges[i][1]; 
+			n = p_n, m = p_m; rep(i, m) l[i].a = pl[i].a, l[i].b = pl[i].b; 
+			build();
 		}
+		acc = 0;
 		construct(k % 3);
 		localSearch();
-		if (acc + cc < bestNum) {
-			bestNum = acc + cc;
-			rep(i, cc) bestSolution[acc + i] = consAdd[i];
+		if (bcc + cc + acc < bestNum) {
+			bestNum = bcc;
+			rep(i, cc) bestSolution[bestNum++] = consAdd[i];
+			rep(i, acc) bestSolution[bestNum++] = added[i];
 		}
+		//cout<<k<<":"<<bestNum<<endl;
 	}
 }
 void output() {
 	printf("%d\n{", bestNum);
 	rep(i, bestNum) {
-		if (i == bestNum - 1) printf("%d}\n", bestSolution[i]);
-		else printf("%d, ", bestSolution[i]);
+		if (i == bestNum - 1) printf("%d}\n", oriID[bestSolution[i]]);
+		else printf("%d, ", oriID[bestSolution[i]]);
 	}
 }
 int main() {
 	input();
-	//reduce();
+	
 	work();
 	output();
 	return 0;
 }
+
 
 
