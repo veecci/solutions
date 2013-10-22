@@ -66,10 +66,10 @@ struct lines {
 int pre[N], nxt[N];
 int o_n, o_m;
 int p_n, p_m, p_edges[M][2];
-int newID[N], oriID[N], poriID[N], tID[N];
 // }}
 
 void delR() {
+	if (m == 0) return;
 	int tm = 1;
 	sort(l, l + m);
 	for (int i = 1; i < m; ++i) {
@@ -99,10 +99,9 @@ inline void input() {
 	init();
 	clr(pre, 0xff), clr(nxt, 0xff);
 	n0 = o_n = n = getInt(), m = o_m = getInt();
-	Rep(i, n) oriID[i] = i;
 	rep(i, m) {
-		l[i].a = getInt();
-		l[i].b = getInt();
+		l[i].a = ol[i].a = getInt();
+		l[i].b = ol[i].b = getInt();
 	}
 	build();
 }
@@ -132,27 +131,13 @@ void rebuild() {
 	delR();
 	build();
 }
-void rebuild2() {
-	int mt = 0;
-	rep(i, m) {
-		if (!deled[oriID[l[i].a]] && !deled[oriID[l[i].b]]) {
-			l[mt].a = l[i].a;
-			l[mt].b = l[i].b;
-			++mt;
-		}	
-	}
-	m = mt;
-	delR();
-	build();
-}
 void reduce() {
-	clr(ignored, 0);
 	bool updated = 1;
 	while (updated) {
 		updated = 0;
 		rep(i, m) {
 			if (!ignored[l[i].a] && l[i].a == l[i].b) {
-				added[acc++] = oriID[l[i].a];
+				added[acc++] = l[i].a;
 				ignored[l[i].a] = 1;
 				updated = 1;
 			}
@@ -200,20 +185,6 @@ void reduce() {
 			}
 		}
 	}
-	//rebuild
-	int id = 0;
-	Rep(i, n) tID[i] = oriID[i];
-	Rep(i, n) if (!ignored[i]) {
-		newID[i] = ++id;
-		oriID[id] = tID[i];
-	}
-
-	n = id;
-	rep(i, m) {
-		l[i].a = newID[l[i].a];
-		l[i].b = newID[l[i].b];
-	}
-	build();
 }
 
 // judge DAG {{
@@ -232,8 +203,8 @@ bool check() {
 
 // ConstructGreedyRandomizedSolution {{
 struct consNode {
-	int id, deg_in, deg_out;
-	consNode(int id = 0, int deg_in = 0, int deg_out = 0) : id(id), deg_in(deg_in), deg_out(deg_out) {}
+	int id, deg_in, deg_out; bool av;
+	consNode(int id = 0, int deg_in = 0, int deg_out = 0, bool av = 0) : id(id), deg_in(deg_in), deg_out(deg_out), av(av) {}
 } cons[N], constmp;
 int consAdd[N], cc;
 
@@ -248,39 +219,29 @@ inline bool cmp2(consNode const &a, consNode const &b) {
 }
 
 void construct(int g) {
-	clr(deled, 0); cc = 0; int cur = 1;
-	Rep(i, n) cons[i] = consNode(i, deg_in[i], deg_out[i]);
+	cc = 0; int cur = 1;
+	Rep(i, n) cons[i] = consNode(i, deg_in[i], deg_out[i], 1);
 
 	if (g == 0) sort(cons + 1, cons + n + 1, cmp0);
 	else if (g == 1) sort(cons + 1, cons + n + 1, cmp1);
 	else sort(cons + 1, cons + n + 1, cmp2);
 	int nn = n;
 	while (check() && cur <= nn) {
-		while (cur <= nn && deled[oriID[cons[cur].id]]) {
+		while (cur <= nn && ignored[cons[cur].id]) {
 			++cur;
 		}
 		if (cur > nn) break;
 		constmp = cons[cur++];
-		deled[oriID[constmp.id]] = 1;
-		consAdd[cc++] = oriID[constmp.id];
+		ignored[constmp.id] = 1;
+		consAdd[cc++] = constmp.id;
+		//printf("DEL %d\n", oriID[constmp.id]);
 		
 		//rebuild
-		rebuild2();
-		int id = 0;
-		Rep(i, n) tID[i] = oriID[i];
-		Rep(i, n) if (!deled[oriID[i]]) {
-			newID[i] = ++id;
-			oriID[id] = tID[i];
-		}
-		n = id;
-		rep(i, m) {
-			l[i].a = newID[l[i].a];
-			l[i].b = newID[l[i].b];
-		}
-		delR();
-		build();
+		rebuild();
 		reduce();
 	}	
+	//cout<<cur<<":"<<nn<<endl;
+	//cout<<check()<<" "<<acc+cc<<endl;
 }
 // }}
 
@@ -298,16 +259,17 @@ void output() {
 	}
 }
 
+bool pig[N];
 
 void work() {
-	acc = 0; 
+	clr(ignored, 0); acc = 0; 
 	reduce(); int bcc = acc;
 	rep(i, acc) bestSolution[i] = added[i];
 	bestNum = n0;
-	p_n = n, p_m = m; rep(i, m) pl[i].a = l[i].a, pl[i].b = l[i].b; Rep(i, n) poriID[i] = oriID[i];
+	p_n = n, p_m = m; rep(i, m) pl[i].a = l[i].a, pl[i].b = l[i].b; Rep(i, n) pig[i] = ignored[i];
 	rep(k, MaxIter) {
 		if (k) { 
-			n = p_n, m = p_m; rep(i, m) l[i].a = pl[i].a, l[i].b = pl[i].b; Rep(i, n) oriID[i] = poriID[i];
+			n = p_n, m = p_m; rep(i, m) l[i].a = pl[i].a, l[i].b = pl[i].b; Rep(i, n) ignored[i] = pig[i];
 			build();
 		}
 		acc = 0;
@@ -354,7 +316,7 @@ int main() {
 	//freopen("P500-6500.dat", "r", stdin);
 	//freopen("P500-7000.dat", "r", stdin);
 	//freopen("P1000-3000.dat", "r", stdin);
-	//freopen("P1000-35000.dat", "r", stdin);
+	//freopen("P1000-3500.dat", "r", stdin);
 	//freopen("P1000-4000.dat", "r", stdin);
 	//freopen("P1000-4500.dat", "r", stdin);
 	//freopen("P1000-5000.dat", "r", stdin);
@@ -378,6 +340,7 @@ int main() {
 	if (!check()) puts("check OK"); else puts("Wrong!");
 	return 0;
 }
+
 
 
 
