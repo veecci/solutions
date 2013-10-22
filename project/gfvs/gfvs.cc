@@ -32,7 +32,7 @@ using namespace std;
 // const {{
 int const N = 10010;
 int const M = 1000010;
-int const MaxIter = 10000;
+int const MaxIter = 3;
 //double const alpha = 0.88;
 // }}
 
@@ -111,16 +111,20 @@ void reduce() {
 	bool updated = 1;
 	clr(ignored, 0);
 	while (updated) {
+		rep(i, m) {
+			printf("(%d, %d)\n", edges[i][0], edges[i][1]);
+		}system("pause");
 		updated = 0;
 		rep(i, m) {
 			if (!ignored[edges[i][0]] && edges[i][0] == edges[i][1]) {
 				added[acc++] = edges[i][0];
-				ignored[i] = 1;
+				ignored[edges[i][0]] = 1;
 				updated = 1;
 			}
 		}
 		Rep(i, n) if (!ignored[i]) {
 			if (!deg_in[i] || !deg_out[i]) {
+				cout<<"del " << i << endl;
 				ignored[i] = 1;
 				updated = 1;
 			}
@@ -131,6 +135,8 @@ void reduce() {
 		}
 		Rep(i, n) {
 			if (!ignored[i] && deg_in[i] == 1) {
+				cout<<"del "<<i<<endl;
+				ignored[i] = 1;
 				int u = pre[i], sel = -1;
 				rep(j, m) {
 					if (edges[j][0] == u && edges[j][1] == i) sel = j;
@@ -144,6 +150,8 @@ void reduce() {
 				break;
 			}
 			if (!ignored[i] && deg_out[i] == 1) {
+				cout<<"del " <<i<<endl;
+				ignored[i] = 1;
 				int v = nxt[i], sel = -1;
 				rep(j, m) {
 					if (edges[j][0] == i && edges[j][1] == v) sel = j;
@@ -170,7 +178,7 @@ void reduce() {
 }
 
 // judge DAG {{
-bool vis[N];
+int vis[N];
 bool cdfs(int u) {
 	if (~vis[u]) return vis[u]; vis[u] = 1;
 	for (int i = p[u]; ~i; i = e[i].next) if (cdfs(e[i].u)) return 1;
@@ -178,7 +186,7 @@ bool cdfs(int u) {
 }
 bool check() {
 	clr(vis, 0xff);
-	Rep(i, n) if (!~vis[i] && cdfs(i)) return 1;
+	Rep(i, n) if (!~vis[i] && cdfs(i)) return 1; 
 	return 0;
 }
 // }}
@@ -187,21 +195,28 @@ bool check() {
 struct consNode {
 	int id, deg_in, deg_out;
 	consNode(int id = 0, int deg_in = 0, int deg_out = 0) : id(id), deg_in(deg_in), deg_out(deg_out) {}
-	friend bool operator < (consNode a, consNode b) {
-		return a.deg_in + a.deg_out < b.deg_in + b.deg_out;
-		//return a.deg_in * a.deg_out < b.deg_in * b.deg_out;
-		//return max(a.deg_in, a.deg_out) < max(b.deg_in, b.deg_out);
-	}
-} constmp;
-priority_queue <consNode> consQ;
+} cons[N], constmp;
 int consAdd[N], cc;
 
-void construct() {
-	clr(ignored, 0); cc = 0;
-	while (!consQ.empty()) consQ.pop();
-	Rep(i, n) consQ.push(consNode(i, deg_in[i], deg_out[i]));
-	while (check()) {
-		constmp = consQ.top(); consQ.pop();
+inline bool cmp0(consNode const &a, consNode const &b) {
+	return a.deg_in + a.deg_out > b.deg_in + b.deg_out;
+}
+inline bool cmp1(consNode const &a, consNode const &b) {
+	return a.deg_in * a.deg_out > b.deg_in * b.deg_out;
+}
+inline bool cmp2(consNode const &a, consNode const &b) {
+	return max(a.deg_in, a.deg_out) > max(b.deg_in, b.deg_out);
+}
+
+void construct(int g) {
+	clr(ignored, 0); cc = 0; int cur = 0;
+	Rep(i, n) cons[i] = consNode(i, deg_in[i], deg_out[i]);
+	if (g == 0) sort(cons + 1, cons + n + 1, cmp0);
+	else if (g == 1) sort(cons + 1, cons + n + 1, cmp1);
+	else sort(cons + 1, cons + n + 1, cmp2);
+	
+	while (check() && cur < n) {
+		constmp = cons[cur++];
 		if (ignored[constmp.id]) continue;
 		ignored[constmp.id] = 1;
 		consAdd[cc++] = constmp.id;
@@ -228,7 +243,7 @@ void work() {
 		if (k) { 
 			n = p_n, m = p_m; rep(i, m) edges[i][0] = p_edges[i][0], edges[i][1] = p_edges[i][1]; 
 		}
-		construct();
+		construct(k % 3);
 		localSearch();
 		if (acc + cc < bestNum) {
 			bestNum = acc + cc;
@@ -236,11 +251,18 @@ void work() {
 		}
 	}
 }
-
+void output() {
+	printf("%d\n{", bestNum);
+	rep(i, bestNum) {
+		if (i == bestNum - 1) printf("%d}\n", bestSolution[i]);
+		else printf("%d, ", bestSolution[i]);
+	}
+}
 int main() {
 	input();
+	//reduce();
 	work();
-
+	output();
 	return 0;
 }
 
