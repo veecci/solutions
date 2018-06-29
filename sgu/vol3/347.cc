@@ -18,27 +18,19 @@
 #define clr(x, a) memset(x, (a), sizeof x)
 using namespace std;
 typedef long long ll;
-int cal(int n) {
-  vector<int> v;
-  for (int i = 2; i <= n; ++i) {
-    if (n % i == 0) {
-      v.push_back(i);
-      while (n % i == 0) n /= i;
-    }
-  }
-  if (n > 1) v.push_back(n);
-  int x = 0, s = 0;
-  rep(i, v.size()) {
-    s += v[i];
-    x = max(v[i], x);
-  }
-  return x * 2 - s;
+int const N = 111;
+string s[N];
+bool cmp(string s1, string s2) {
+  string a = s1 + s2;
+  string b = s2 + s1;
+  return a < b;
 }
 int main() {
-  int a, b;
-  scanf("%d%d", &a, &b);
-  if (cal(a) < cal(b)) puts("b");
-  else puts("a");
+  int n; cin >> n;
+  rep(i, n) cin >> s[i];
+  sort(s, s + n, cmp);
+  rep(i, n) cout << s[i];
+  cout << endl;
   return 0;
 }
 
