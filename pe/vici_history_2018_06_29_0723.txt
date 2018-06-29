@@ -1,0 +1,311 @@
+628: 28 Jun 18 (18:10)
+287: 02 Apr 18 (15:49)
+366: 30 Mar 18 (15:13)
+405: 29 Mar 18 (18:22)
+622: 29 Mar 18 (12:11)
+615: 13 Feb 18 (11:37)
+618: 09 Feb 18 (19:20)
+613: 05 Nov 17 (20:45)
+469: 25 Oct 17 (16:50)
+612: 23 Oct 17 (02:51)
+213: 28 Sep 17 (18:16)
+221: 25 Sep 17 (12:07)
+240: 22 Sep 17 (19:13)
+142: 19 Sep 17 (14:05)
+510: 18 Sep 17 (14:12)
+389: 15 Sep 17 (17:32)
+181: 11 Sep 17 (18:46)
+220: 11 Sep 17 (17:21)
+609: 11 Sep 17 (11:13)
+260: 30 Aug 17 (18:13)
+418: 30 Aug 17 (17:16)
+537: 29 Aug 17 (18:15)
+152: 29 Aug 17 (12:06)
+333: 07 Jul 17 (14:44)
+194: 06 Jul 17 (13:01)
+154: 05 Jul 17 (20:26)
+155: 03 Jul 17 (11:27)
+480: 29 Jun 17 (15:48)
+307: 29 Jun 17 (11:26)
+386: 27 Jun 17 (14:45)
+147: 25 Jun 17 (04:03)
+202: 23 Jun 17 (01:48)
+189: 22 Jun 17 (12:04)
+165: 20 Jun 17 (01:36)
+230: 19 Jun 17 (17:21)
+561: 19 Jun 17 (14:20)
+479: 16 Jun 17 (17:53)
+531: 16 Jun 17 (15:16)
+267: 16 Jun 17 (12:40)
+320: 16 Jun 17 (11:41)
+442: 14 Jun 17 (16:55)
+452: 12 Jun 17 (15:40)
+607: 11 Jun 17 (02:14)
+222: 08 Jun 17 (16:55)
+201: 08 Jun 17 (15:53)
+560: 07 Jun 17 (21:58)
+571: 02 Jun 17 (17:33)
+595: 02 Jun 17 (16:36)
+235: 01 Jun 17 (19:13)
+509: 31 May 17 (19:45)
+277: 31 May 17 (17:40)
+605: 31 May 17 (12:29)
+451: 27 May 17 (16:08)
+392: 27 May 17 (03:06)
+365: 25 May 17 (16:49)
+604: 22 May 17 (19:21)
+463: 10 May 17 (18:46)
+601: 02 May 17 (02:31)
+358: 28 Apr 17 (19:03)
+336: 28 Apr 17 (16:22)
+329: 28 Apr 17 (11:32)
+351: 21 Apr 17 (17:29)
+587: 21 Apr 17 (15:28)
+387: 21 Apr 17 (11:41)
+303: 20 Apr 17 (17:50)
+349: 14 Apr 17 (17:48)
+290: 12 Apr 17 (17:22)
+461: 01 Apr 17 (18:34)
+485: 01 Apr 17 (16:40)
+321: 01 Apr 17 (15:11)
+294: 01 Apr 17 (12:46)
+166: 31 Mar 17 (17:08)
+581: 17 Dec 16 (23:40)
+375: 11 Dec 16 (12:20)
+516: 10 Dec 16 (09:57)
+543: 09 Dec 16 (17:24)
+512: 07 Dec 16 (12:55)
+342: 06 Dec 16 (21:30)
+425: 05 Dec 16 (17:18)
+401: 05 Dec 16 (11:43)
+291: 04 Dec 16 (12:24)
+151: 03 Dec 16 (23:58)
+258: 30 Nov 16 (22:31)
+324: 30 Nov 16 (02:06)
+501: 28 Nov 16 (18:48)
+234: 25 Nov 16 (12:41)
+435: 24 Nov 16 (19:34)
+359: 23 Nov 16 (16:27)
+343: 22 Nov 16 (23:57)
+348: 22 Nov 16 (19:13)
+346: 22 Nov 16 (18:51)
+315: 22 Nov 16 (17:32)
+313: 21 Nov 16 (20:01)
+374: 21 Nov 16 (18:34)
+371: 21 Nov 16 (14:11)
+148: 16 Nov 16 (19:23)
+168: 15 Nov 16 (18:48)
+288: 15 Nov 16 (17:21)
+197: 15 Nov 16 (16:27)
+196: 15 Nov 16 (16:01)
+200: 14 Nov 16 (17:39)
+577: 13 Nov 16 (03:22)
+193: 11 Nov 16 (18:02)
+158: 10 Nov 16 (14:19)
+186: 10 Nov 16 (13:34)
+183: 10 Nov 16 (12:22)
+185: 10 Nov 16 (11:44)
+215: 10 Nov 16 (02:20)
+161: 09 Nov 16 (03:09)
+150: 07 Nov 16 (17:14)
+141: 07 Nov 16 (14:12)
+128: 07 Nov 16 (01:34)
+126: 06 Nov 16 (22:41)
+139: 05 Nov 16 (18:40)
+140: 04 Nov 16 (14:14)
+137: 04 Nov 16 (11:56)
+138: 03 Nov 16 (18:18)
+160: 02 Nov 16 (12:43)
+171: 01 Nov 16 (17:41)
+214: 01 Nov 16 (16:00)
+162: 01 Nov 16 (10:39)
+227: 26 Oct 16 (02:14)
+207: 03 Jun 16 (13:52)
+190: 28 May 16 (00:37)
+225: 27 May 16 (18:27)
+149: 27 May 16 (16:52)
+178: 27 May 16 (16:18)
+172: 27 May 16 (15:22)
+174: 27 May 16 (14:59)
+146: 21 May 16 (03:17)
+293: 21 May 16 (01:13)
+310: 20 May 16 (19:10)
+134: 18 May 16 (01:08)
+121: 18 May 16 (00:04)
+109: 17 May 16 (23:29)
+429: 27 Mar 16 (16:37)
+381: 27 Mar 16 (15:46)
+323: 25 Mar 16 (17:55)
+173: 25 Mar 16 (16:02)
+136: 24 Mar 16 (00:57)
+135: 24 Mar 16 (00:43)
+084: 22 Mar 16 (17:04)
+064: 06 Mar 16 (13:07)
+098: 06 Mar 16 (12:29)
+127: 04 Mar 16 (19:00)
+122: 04 Mar 16 (18:13)
+090: 04 Mar 16 (16:43)
+086: 04 Mar 16 (16:15)
+088: 04 Mar 16 (15:25)
+106: 04 Mar 16 (11:09)
+101: 03 Mar 16 (02:29)
+103: 03 Mar 16 (00:10)
+119: 02 Mar 16 (22:55)
+118: 02 Mar 16 (21:45)
+107: 01 Mar 16 (22:07)
+120: 01 Mar 16 (21:33)
+123: 01 Mar 16 (20:45)
+117: 01 Mar 16 (20:19)
+116: 01 Mar 16 (20:15)
+111: 01 Mar 16 (18:48)
+493: 01 Mar 16 (15:26)
+271: 01 Mar 16 (13:43)
+549: 01 Mar 16 (00:51)
+286: 29 Feb 16 (18:57)
+265: 29 Feb 16 (15:57)
+259: 27 Feb 16 (00:53)
+297: 25 Feb 16 (01:32)
+231: 24 Feb 16 (16:07)
+133: 24 Feb 16 (00:45)
+130: 24 Feb 16 (00:27)
+129: 23 Feb 16 (17:08)
+132: 23 Feb 16 (14:09)
+125: 23 Feb 16 (11:22)
+131: 22 Feb 16 (18:31)
+191: 19 Feb 16 (18:08)
+110: 19 Feb 16 (17:20)
+108: 19 Feb 16 (14:25)
+093: 18 Feb 16 (18:27)
+100: 17 Feb 16 (18:02)
+124: 17 Feb 16 (04:21)
+115: 17 Feb 16 (04:05)
+114: 17 Feb 16 (03:32)
+113: 17 Feb 16 (00:42)
+145: 16 Feb 16 (23:53)
+164: 16 Feb 16 (23:35)
+080: 16 Feb 16 (22:34)
+094: 16 Feb 16 (14:56)
+091: 16 Feb 16 (14:16)
+203: 16 Feb 16 (12:57)
+443: 16 Feb 16 (11:12)
+095: 15 Feb 16 (16:07)
+096: 15 Feb 16 (14:45)
+243: 15 Feb 16 (12:14)
+518: 14 Feb 16 (19:11)
+500: 13 Aug 15 (15:45)
+521: 08 Jul 15 (14:43)
+504: 15 Apr 15 (17:11)
+223: 05 Dec 14 (16:21)
+105: 05 Dec 14 (14:32)
+102: 05 Dec 14 (14:01)
+491: 05 Dec 14 (11:45)
+458: 07 Mar 14 (18:34)
+205: 12 Aug 13 (03:38)
+169: 09 May 13 (09:47)
+216: 08 May 13 (21:28)
+409: 11 Jan 13 (15:52)
+407: 23 Dec 12 (18:33)
+007: No date available
+033: No date available
+034: No date available
+032: No date available
+015: No date available
+035: No date available
+036: No date available
+008: No date available
+037: No date available
+003: No date available
+038: No date available
+039: No date available
+040: No date available
+041: No date available
+042: No date available
+043: No date available
+044: No date available
+045: No date available
+031: No date available
+027: No date available
+030: No date available
+013: No date available
+016: No date available
+006: No date available
+017: No date available
+005: No date available
+018: No date available
+019: No date available
+014: No date available
+004: No date available
+020: No date available
+021: No date available
+029: No date available
+046: No date available
+023: No date available
+012: No date available
+024: No date available
+011: No date available
+025: No date available
+010: No date available
+026: No date available
+009: No date available
+028: No date available
+022: No date available
+076: No date available
+047: No date available
+206: No date available
+074: No date available
+075: No date available
+077: No date available
+250: No date available
+249: No date available
+078: No date available
+079: No date available
+081: No date available
+082: No date available
+083: No date available
+085: No date available
+211: No date available
+204: No date available
+072: No date available
+087: No date available
+089: No date available
+092: No date available
+188: No date available
+187: No date available
+097: No date available
+179: No date available
+099: No date available
+002: No date available
+159: No date available
+104: No date available
+112: No date available
+073: No date available
+071: No date available
+048: No date available
+057: No date available
+049: No date available
+050: No date available
+051: No date available
+052: No date available
+357: No date available
+356: No date available
+053: No date available
+054: No date available
+055: No date available
+347: No date available
+056: No date available
+345: No date available
+058: No date available
+070: No date available
+059: No date available
+060: No date available
+061: No date available
+062: No date available
+063: No date available
+065: No date available
+066: No date available
+067: No date available
+304: No date available
+068: No date available
+301: No date available
+069: No date available
+001: No date available
